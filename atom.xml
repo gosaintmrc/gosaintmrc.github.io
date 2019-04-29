@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-29T02:27:13.069Z</updated>
+  <updated>2019-04-29T09:11:24.481Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Freemaker在表格中遍历数据</title>
+    <link href="http://yoursite.com/2019/04/29/Freemaker%E5%9C%A8%E8%A1%A8%E6%A0%BC%E4%B8%AD%E9%81%8D%E5%8E%86%E6%95%B0%E6%8D%AE/"/>
+    <id>http://yoursite.com/2019/04/29/Freemaker在表格中遍历数据/</id>
+    <published>2019-04-29T09:06:13.000Z</published>
+    <updated>2019-04-29T09:11:24.481Z</updated>
+    
+    <content type="html"><![CDATA[<p>Controller层如下所示：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/test"</span>, method = RequestMethod.GET)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(Model model)</span> </span>&#123;</span><br><span class="line">      List&lt;City&gt; cityList = cityService.findAllCity();</span><br><span class="line">      model.addAttribute(<span class="string">"cityList"</span>,cityList);</span><br><span class="line">      <span class="keyword">return</span> <span class="string">"test"</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure><p>reemaker如下所示：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>城市名<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>省编码<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>描述<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">#list</span> <span class="attr">cityList</span>! <span class="attr">as</span> <span class="attr">city</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;city.cityName!&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;city.provinceId!&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;city.description!&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">#list</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure><p>注意：freemaker在对象后面添加 ！ ，表示允许该对象为空。也可以不加！，直接写对象。</p><p>效果如下:</p><p><img src="/2019/04/29/Freemaker在表格中遍历数据/2.jpg" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Controller层如下所示：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="SpringBoot" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/SpringBoot/"/>
+    
+    
+      <category term="Freemaker" scheme="http://yoursite.com/tags/Freemaker/"/>
+    
+  </entry>
   
   <entry>
     <title>《Spring实战》系列之Bean的装配-Days02</title>
