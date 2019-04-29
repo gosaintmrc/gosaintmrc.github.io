@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JAVA开发,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1 幂等性概念​    在Java领域，我们有时候或者大多时侯都要保证接口幂等。那么什么是幂等呢？简单的来说就是防止重复提交数据或者重复对接口的调用。这在金融领域或者电商领域显得尤为重要。比如一笔订单我们要保证不能重复提交。当前前端也可以做部分的限制，但是我们应该在后端做相应的处理，以保证我们的数据操作符合业务逻辑。 1.1表单重复提价问题rpc远程调用时候 发生网络延迟  可能有重试机制  MQ">
+<meta name="keywords" content="JAVA开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="接口的幂等性设计 一">
+<meta property="og:url" content="http://yoursite.com/2019/01/28/接口的幂等性设计-一/index.html">
+<meta property="og:site_name" content="大佛拈花">
+<meta property="og:description" content="1 幂等性概念​    在Java领域，我们有时候或者大多时侯都要保证接口幂等。那么什么是幂等呢？简单的来说就是防止重复提交数据或者重复对接口的调用。这在金融领域或者电商领域显得尤为重要。比如一笔订单我们要保证不能重复提交。当前前端也可以做部分的限制，但是我们应该在后端做相应的处理，以保证我们的数据操作符合业务逻辑。 1.1表单重复提价问题rpc远程调用时候 发生网络延迟  可能有重试机制  MQ">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/01/28/接口的幂等性设计-一/123.png">
+<meta property="og:updated_time" content="2019-03-04T01:30:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="接口的幂等性设计 一">
+<meta name="twitter:description" content="1 幂等性概念​    在Java领域，我们有时候或者大多时侯都要保证接口幂等。那么什么是幂等呢？简单的来说就是防止重复提交数据或者重复对接口的调用。这在金融领域或者电商领域显得尤为重要。比如一笔订单我们要保证不能重复提交。当前前端也可以做部分的限制，但是我们应该在后端做相应的处理，以保证我们的数据操作符合业务逻辑。 1.1表单重复提价问题rpc远程调用时候 发生网络延迟  可能有重试机制  MQ">
+<meta name="twitter:image" content="http://yoursite.com/2019/01/28/接口的幂等性设计-一/123.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/28/接口的幂等性设计-一/">
+
+
+
+
+
+  <title>接口的幂等性设计 一 | 大佛拈花</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">大佛拈花</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/28/接口的幂等性设计-一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gosaint">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大佛拈花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">接口的幂等性设计 一</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-28T19:24:26+08:00">
+                2019-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA开发/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-幂等性概念"><a href="#1-幂等性概念" class="headerlink" title="1 幂等性概念"></a>1 幂等性概念</h1><p>​    在Java领域，我们有时候或者大多时侯都要保证接口幂等。那么什么是幂等呢？简单的来说就是防止重复提交数据或者重复对接口的调用。这在金融领域或者电商领域显得尤为重要。比如一笔订单我们要保证不能重复提交。当前前端也可以做部分的限制，但是我们应该在后端做相应的处理，以保证我们的数据操作符合业务逻辑。</p>
+<h2 id="1-1表单重复提价问题"><a href="#1-1表单重复提价问题" class="headerlink" title="1.1表单重复提价问题"></a>1.1表单重复提价问题</h2><pre><code>rpc远程调用时候 发生网络延迟  可能有重试机制
+
+MQ消费者幂等（保证唯一）一样 
+</code></pre><h1 id="2-基于Redis-Token幂等"><a href="#2-基于Redis-Token幂等" class="headerlink" title="2 基于Redis+Token幂等"></a>2 基于Redis+Token幂等</h1><p>​    这也就是我为什么这里为什么是接口的幂等设计一的原因啦。实现的方式当然是多种的。比如乐观锁机制等。这里我们使用了唯一Token的方式来实现。流程如下：</p>
+<p><img src="/2019/01/28/接口的幂等性设计-一/123.png" alt="你想输入的替代文字"></p>
+<p>​    说明下流程：</p>
+<p>​    1 假设前端准备提交支付按钮</p>
+<p>​    2 此时准备提交表单数据，并且表单存在Token.</p>
+<p>​    3 后台校验Token,并且此时删除Redis的Token</p>
+<p>​    4 处理逻辑</p>
+<p>​    5 当点击重复提交的时候，此时的Token还是之前的Token</p>
+<p>​    6 后端发现Redis中无该Token,表示重复提交，直接返回！</p>
+<h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3 代码实现"></a>3 代码实现</h1><h2 id="3-1-注解封装"><a href="#3-1-注解封装" class="headerlink" title="3.1 注解封装"></a>3.1 注解封装</h2><p>ExtAPIIdempotent  form表单提交封装</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(value = ElementType.METHOD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> ExtAPIIdempotent &#123;</span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ExtAPIToken  Token封装</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(value = ElementType.METHOD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> ExtAPIToken &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-2-AOP"><a href="#3-2-AOP" class="headerlink" title="3.2 AOP"></a>3.2 AOP</h2><p>AOP作用就是拦截到所有的标明上述注解的方法，在跳转到表单的时候设置Token以及表单提交的时候校验Token。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExtApiAopIdemComponent</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisTokenComponent redisToken;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 作用的类：切点</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Pointcut</span>(<span class="string">"execution(public * com.gosaint.idempotency.controller.*.*(..))"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">rlAop</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 前置通知转发Token参数  进行拦截的逻辑</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> joinPoint</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Before</span>(<span class="string">"rlAop()"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">(JoinPoint joinPoint)</span></span>&#123;</span><br><span class="line">        MethodSignature signature = (MethodSignature )joinPoint.getSignature();</span><br><span class="line">        <span class="comment">//查询所有的方法上面有Token注解的</span></span><br><span class="line">        ExtAPIToken apiToken = signature.getMethod().getDeclaredAnnotation(ExtAPIToken.class);</span><br><span class="line">        <span class="keyword">if</span>(apiToken!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 如果存在Token注解</span></span><br><span class="line"><span class="comment">             * （1）从redis中获取Token,然后存储到request请求头里面</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            apiToken();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 环绕通知参数验证</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> proceedingJoinPoint</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Throwable</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Around</span>(<span class="string">"rlAop()"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">doAround</span><span class="params">(ProceedingJoinPoint proceedingJoinPoint)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        MethodSignature signature = (MethodSignature )proceedingJoinPoint.getSignature();</span><br><span class="line">        <span class="comment">//查询所有的方法上面有Token注解的</span></span><br><span class="line">        ExtAPIIdempotent extAPIIdempotent =</span><br><span class="line">                signature.getMethod().getDeclaredAnnotation(ExtAPIIdempotent.class);</span><br><span class="line">        <span class="keyword">if</span>(extAPIIdempotent!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="comment">//有注解的情况 有注解的说明需要进行token校验</span></span><br><span class="line">            <span class="keyword">return</span> extAPIIdempotent(proceedingJoinPoint, extAPIIdempotent);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//如果没有注解。直接放行执行逻辑</span></span><br><span class="line">        Object proceed = proceedingJoinPoint.proceed();</span><br><span class="line">        <span class="keyword">return</span> proceed;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> Object <span class="title">extAPIIdempotent</span><span class="params">(ProceedingJoinPoint proceedingJoinPoint, ExtAPIIdempotent apiIdempotent)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        HttpServletRequest request = getRequest();</span><br><span class="line">        String valueType = apiIdempotent.value();</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isEmpty(valueType)) &#123;</span><br><span class="line">            response(<span class="string">"参数错误!"</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String token=<span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">//如果存在header中 从头中获取</span></span><br><span class="line">        <span class="keyword">if</span>(valueType.equals(ConstantUtils.EXTAPIHEAD))&#123;</span><br><span class="line">             token = request.getHeader(<span class="string">"token"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//否则从请求参数中获取</span></span><br><span class="line">            token=request.getParameter(<span class="string">"token"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isEmpty(token)) &#123;</span><br><span class="line">            response(<span class="string">"参数错误!"</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">boolean</span> isToken = redisToken.checkToken(token);</span><br><span class="line">        <span class="keyword">if</span>(!isToken)&#123;</span><br><span class="line">            response(<span class="string">"请勿重复提交!"</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Object proceed = proceedingJoinPoint.proceed();</span><br><span class="line">        <span class="keyword">return</span> proceed;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">response</span><span class="params">(<span class="keyword">final</span> String msg)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();</span><br><span class="line">        HttpServletResponse response = attributes.getResponse();</span><br><span class="line">        response.setHeader(<span class="string">"Content-type"</span>, <span class="string">"text/html;charset=UTF-8"</span>);</span><br><span class="line">        PrintWriter writer = response.getWriter();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            writer.println(msg);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            writer.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">apiToken</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        getRequest().setAttribute(<span class="string">"token"</span>,redisToken.getToken());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> HttpServletRequest <span class="title">getRequest</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ServletRequestAttributes requestAttributes = </span><br><span class="line">                (ServletRequestAttributes )RequestContextHolder.getRequestAttributes();</span><br><span class="line">        HttpServletRequest request = requestAttributes.getRequest();</span><br><span class="line">        <span class="keyword">return</span> request;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-3-Controller"><a href="#3-3-Controller" class="headerlink" title="3.3 Controller"></a>3.3 Controller</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Controller</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IdempotencyController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger =  LoggerFactory.getLogger(IdempotencyController.class);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 页面测试</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> model</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * 统一设置Token</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/idemo"</span>)</span><br><span class="line">    <span class="meta">@ExtAPIToken</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ModelAndView <span class="title">ideoFormvertify</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">        ModelAndView modelAndView=<span class="keyword">new</span> ModelAndView();</span><br><span class="line">        modelAndView.setViewName(<span class="string">"order"</span>);</span><br><span class="line">        <span class="keyword">return</span> modelAndView;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/idemo/trans"</span>)</span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="meta">@ExtAPIIdempotent</span>(value = <span class="string">"form"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">addUserPage</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"添加成功！"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-4-表单"><a href="#3-4-表单" class="headerlink" title="3.4 表单"></a>3.4 表单</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Token幂等<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/idemo/trans"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">id</span>=<span class="string">"token"</span> <span class="attr">name</span>=<span class="string">"token"</span> <span class="attr">value</span>=<span class="string">"$&#123;token&#125;"</span>&gt;</span></span><br><span class="line">    name: <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"name"</span> <span class="attr">name</span>=<span class="string">"name"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>age:  <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"age"</span> <span class="attr">name</span>=<span class="string">"age"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"submit"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    var value = document.getElementById("token").value;</span></span><br><span class="line"><span class="undefined">    alert(value);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/gosaintmrc/idempotency" target="_blank" rel="noopener">Github地址</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JAVA开发/" rel="tag"># JAVA开发</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/30/Hadoop伪分布式搭建/" rel="prev" title="Hadoop伪分布式搭建">
+                Hadoop伪分布式搭建 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">gosaint</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/gosaintmrc/" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:yourname@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-幂等性概念"><span class="nav-number">1.</span> <span class="nav-text">1 幂等性概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1表单重复提价问题"><span class="nav-number">1.1.</span> <span class="nav-text">1.1表单重复提价问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-基于Redis-Token幂等"><span class="nav-number">2.</span> <span class="nav-text">2 基于Redis+Token幂等</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-代码实现"><span class="nav-number">3.</span> <span class="nav-text">3 代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-注解封装"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 注解封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-AOP"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 AOP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-Controller"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Controller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-表单"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 表单</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gosaint</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
