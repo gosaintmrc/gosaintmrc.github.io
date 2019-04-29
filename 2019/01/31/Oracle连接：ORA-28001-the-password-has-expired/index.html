@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Oracle异常,">
 
 
 
@@ -79,13 +79,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+<meta name="description" content="Oracle连接出现的异常： ​            原因是密码过期。 此时我们应该登陆oracle.以DBA的身份登陆。打开cmd。然后输入：sqlplus / as sysdba；之后查看密码时间： select * from dba_profiles where profile=’DEFAULT’ and resource_name=’PASSWORD_LIFE_TIME’; 可以看到是1">
+<meta name="keywords" content="Oracle异常">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle连接：ORA-28001 the password has expired">
+<meta property="og:url" content="http://yoursite.com/2019/01/31/Oracle连接：ORA-28001-the-password-has-expired/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Oracle连接出现的异常： ​            原因是密码过期。 此时我们应该登陆oracle.以DBA的身份登陆。打开cmd。然后输入：sqlplus / as sysdba；之后查看密码时间： select * from dba_profiles where profile=’DEFAULT’ and resource_name=’PASSWORD_LIFE_TIME’; 可以看到是1">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/01/31/Oracle连接：ORA-28001-the-password-has-expired/Oracle连接：ORA-28001-the-password-has-expired/111.png">
+<meta property="og:updated_time" content="2019-03-04T01:30:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Oracle连接：ORA-28001 the password has expired">
+<meta name="twitter:description" content="Oracle连接出现的异常： ​            原因是密码过期。 此时我们应该登陆oracle.以DBA的身份登陆。打开cmd。然后输入：sqlplus / as sysdba；之后查看密码时间： select * from dba_profiles where profile=’DEFAULT’ and resource_name=’PASSWORD_LIFE_TIME’; 可以看到是1">
+<meta name="twitter:image" content="http://yoursite.com/2019/01/31/Oracle连接：ORA-28001-the-password-has-expired/Oracle连接：ORA-28001-the-password-has-expired/111.png">
 
 
 
@@ -115,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/">
+  <link rel="canonical" href="http://yoursite.com/2019/01/31/Oracle连接：ORA-28001-the-password-has-expired/">
 
 
 
 
 
-  <title>归档 | Hexo</title>
+  <title>Oracle连接：ORA-28001 the password has expired | Hexo</title>
   
 
 
@@ -140,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -274,391 +281,181 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/31/Oracle连接：ORA-28001-the-password-has-expired/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gosaint">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">Oracle连接：ORA-28001 the password has expired</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-31T14:05:30+08:00">
+                2019-01-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 15 篇日志。 继续努力。
-      </span>
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/31/Hadoop理论之MapReduce/" itemprop="url">
-              
-                <span itemprop="name">Hadoop理论之MapReduce</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-31T19:53:31+08:00" content="2019-01-31">
-          01-31
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/31/Spring5-0的第一次尝鲜/" itemprop="url">
-              
-                <span itemprop="name">Spring5.0的第一次尝鲜</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-31T16:23:00+08:00" content="2019-01-31">
-          01-31
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/31/《Spring实战》系列之Bean的装配-Days02/" itemprop="url">
-              
-                <span itemprop="name">《Spring实战》系列之Bean的装配-Days02</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-31T15:45:42+08:00" content="2019-01-31">
-          01-31
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>Oracle连接出现的异常：</p>
+<p>​       <img src="Oracle连接：ORA-28001-the-password-has-expired\111.png" alt>    </p>
+<p>原因是密码过期。</p>
+<p>此时我们应该登陆oracle.以DBA的身份登陆。打开cmd。然后输入：sqlplus / as sysdba；之后查看密码时间：</p>
+<p>select * from dba_profiles where profile=’DEFAULT’ and resource_name=’PASSWORD_LIFE_TIME’;</p>
+<p>可以看到是180天，此时我们设置为永久：alter profile default limit password_life_time unlimited;​           </p>
+<p>然后需要修改要登陆数据库的用户名： select username from dba_users;查看所有的数据库连接；</p>
+<p>修改密码：alter user 用户名 identified by 密码;</p>
+<p>之后登陆正常。</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/31/《Spring实战》系列之Bean的装配-Days01/" itemprop="url">
-              
-                <span itemprop="name">《Spring实战》系列之Bean的装配-Days01</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-31T15:42:57+08:00" content="2019-01-31">
-          01-31
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/31/jvm堆内存溢出后，其他线程是否可继续工作/" itemprop="url">
-              
-                <span itemprop="name">jvm堆内存溢出后，其他线程是否可继续工作</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-31T15:32:00+08:00" content="2019-01-31">
-          01-31
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/31/nginx的示例操作/" itemprop="url">
-              
-                <span itemprop="name">nginx的示例操作</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-31T15:09:00+08:00" content="2019-01-31">
-          01-31
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/31/RocketMQ入门-单机安装/" itemprop="url">
-              
-                <span itemprop="name">RocketMQ入门---单机安装</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-31T14:17:15+08:00" content="2019-01-31">
-          01-31
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/31/Oracle连接：ORA-28001-the-password-has-expired/" itemprop="url">
-              
-                <span itemprop="name">Oracle连接：ORA-28001 the password has expired</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-31T14:05:30+08:00" content="2019-01-31">
-          01-31
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/30/Hadoop本地开发入门/" itemprop="url">
-              
-                <span itemprop="name">Hadoop本地开发入门</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-30T15:18:20+08:00" content="2019-01-30">
-          01-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/30/Hadoop伪分布式搭建/" itemprop="url">
-              
-                <span itemprop="name">Hadoop伪分布式搭建</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-30T12:12:02+08:00" content="2019-01-30">
-          01-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Oracle异常/" rel="tag"># Oracle异常</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/30/Hadoop本地开发入门/" rel="next" title="Hadoop本地开发入门">
+                <i class="fa fa-chevron-left"></i> Hadoop本地开发入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/31/RocketMQ入门-单机安装/" rel="prev" title="RocketMQ入门---单机安装">
+                RocketMQ入门---单机安装 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -666,6 +463,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -880,6 +681,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
