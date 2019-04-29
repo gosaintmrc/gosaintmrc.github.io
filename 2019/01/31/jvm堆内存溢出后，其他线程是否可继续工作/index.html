@@ -87,13 +87,13 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="最近网上出现一个美团面试题：“一个线程OOM后，其他线程还能运行吗？”。我看网上出现了很多不靠谱的答案。这道题其实很有难度，涉及的知识点有jvm内存分配、作用域、gc等，不是简单的是与否的问题。 由于题目中给出的OOM，java中OOM又分很多类型；比如：堆溢出（“java.lang.OutOfMemoryError: Java heap space”）、永久带溢出（“java.lang.OutO">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/01/31/jvm堆内存溢出后，其他线程是否可继续工作/jvm堆内存溢出后，其他线程是否可继续工作/1.png">
-<meta property="og:image" content="http://yoursite.com/2019/01/31/jvm堆内存溢出后，其他线程是否可继续工作/jvm堆内存溢出后，其他线程是否可继续工作/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/31/jvm堆内存溢出后，其他线程是否可继续工作/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/31/jvm堆内存溢出后，其他线程是否可继续工作/2.png">
 <meta property="og:updated_time" content="2019-03-04T01:30:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jvm堆内存溢出后，其他线程是否可继续工作">
 <meta name="twitter:description" content="最近网上出现一个美团面试题：“一个线程OOM后，其他线程还能运行吗？”。我看网上出现了很多不靠谱的答案。这道题其实很有难度，涉及的知识点有jvm内存分配、作用域、gc等，不是简单的是与否的问题。 由于题目中给出的OOM，java中OOM又分很多类型；比如：堆溢出（“java.lang.OutOfMemoryError: Java heap space”）、永久带溢出（“java.lang.OutO">
-<meta name="twitter:image" content="http://yoursite.com/2019/01/31/jvm堆内存溢出后，其他线程是否可继续工作/jvm堆内存溢出后，其他线程是否可继续工作/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/01/31/jvm堆内存溢出后，其他线程是否可继续工作/1.png">
 
 
 
@@ -394,8 +394,8 @@
 <p>结果展示：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Wed Nov <span class="number">07</span> <span class="number">14</span>:<span class="number">42</span>:<span class="number">18</span> CST <span class="number">2018</span>Thread[Thread-<span class="number">1</span>,<span class="number">5</span>,main]==</span><br><span class="line">Wed Nov <span class="number">07</span> <span class="number">14</span>:<span class="number">42</span>:<span class="number">18</span> CST <span class="number">2018</span>Thread[Thread-<span class="number">0</span>,<span class="number">5</span>,main]==</span><br><span class="line">Wed Nov <span class="number">07</span> <span class="number">14</span>:<span class="number">42</span>:<span class="number">19</span> CST <span class="number">2018</span>Thread[Thread-<span class="number">1</span>,<span class="number">5</span>,main]==</span><br><span class="line">Wed Nov <span class="number">07</span> <span class="number">14</span>:<span class="number">42</span>:<span class="number">19</span> CST <span class="number">2018</span>Thread[Thread-<span class="number">0</span>,<span class="number">5</span>,main]==</span><br><span class="line">Exception in thread <span class="string">"Thread-0"</span> java.lang.OutOfMemoryError: Java heap space</span><br><span class="line">	at com.gosaint.util.JvmThread.lambda$main$<span class="number">0</span>(JvmThread.java:<span class="number">21</span>)</span><br><span class="line">	at com.gosaint.util.JvmThread$$Lambda$<span class="number">1</span>/<span class="number">521645586</span>.run(Unknown Source)</span><br><span class="line">	at java.lang.Thread.run(Thread.java:<span class="number">748</span>)</span><br><span class="line">Wed Nov <span class="number">07</span> <span class="number">14</span>:<span class="number">42</span>:<span class="number">20</span> CST <span class="number">2018</span>Thread[Thread-<span class="number">1</span>,<span class="number">5</span>,main]==</span><br><span class="line">Wed Nov <span class="number">07</span> <span class="number">14</span>:<span class="number">42</span>:<span class="number">21</span> CST <span class="number">2018</span>Thread[Thread-<span class="number">1</span>,<span class="number">5</span>,main]==</span><br><span class="line">Wed Nov <span class="number">07</span> <span class="number">14</span>:<span class="number">42</span>:<span class="number">22</span> CST <span class="number">2018</span>Thread[Thread-<span class="number">1</span>,<span class="number">5</span>,main]==</span><br></pre></td></tr></table></figure>
 <p>JVM启动参数设置：</p>
-<p><img src="jvm堆内存溢出后，其他线程是否可继续工作\1.png" alt></p>
-<p><img src="jvm堆内存溢出后，其他线程是否可继续工作\2.png" alt="2"></p>
+<p><img src="/2019/01/31/jvm堆内存溢出后，其他线程是否可继续工作/1.png" alt></p>
+<p><img src="/2019/01/31/jvm堆内存溢出后，其他线程是否可继续工作/2.png" alt="2"></p>
 <p>上图是JVM堆空间的变化。我们仔细观察一下在14:42:05~14:42:25之间曲线变化，你会发现使用堆的数量，突然间急剧下滑！这代表这一点，当一个线程抛出OOM异常后，它所占据的内存资源会全部被释放掉，从而不会影响其他线程的运行！</p>
 <p>讲到这里大家应该懂了，此题的答案为一个线程溢出后，进程里的其他线程还能照常运行。注意了，这个例子我只演示了堆溢出的情况。如果是栈溢出，结论也是一样的，大家可自行通过代码测试。</p>
 <p>总结：其实发生OOM的线程一般情况下会死亡，也就是会被终结掉，该线程持有的对象占用的heap都会被gc了，释放内存。因为发生OOM之前要进行gc，就算其他线程能够正常工作，也会因为频繁gc产生较大的影响。</p>
@@ -518,7 +518,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

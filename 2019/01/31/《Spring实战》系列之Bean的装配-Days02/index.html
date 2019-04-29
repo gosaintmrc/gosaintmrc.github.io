@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="2.1 回顾对于我第一天在bean的装配中写的，是一些基本的语法或者是Spring本身的一些规定，但是我没有对此进行深究。接下来就让我们仔细的讨论一下细节问题。和传统的类的定义和方法的调用做一些比较。这样就会体现出Ioc的特点。 下面的UML图就是我之前定义的一个接口和自己的一个实现。 ​                     123public interface CompactDisc &amp;#">
+<meta name="description" content="2.1 回顾对于我第一天在bean的装配中写的，是一些基本的语法或者是Spring本身的一些规定，但是我没有对此进行深究。接下来就让我们仔细的讨论一下细节问题。和传统的类的定义和方法的调用做一些比较。这样就会体现出Ioc的特点。 下面的UML图就是我之前定义的一个接口和自己的一个实现。  123public interface CompactDisc &amp;#123;    void play();&amp;">
 <meta name="keywords" content="spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《Spring实战》系列之Bean的装配-Days02">
 <meta property="og:url" content="http://yoursite.com/2019/01/31/《Spring实战》系列之Bean的装配-Days02/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="2.1 回顾对于我第一天在bean的装配中写的，是一些基本的语法或者是Spring本身的一些规定，但是我没有对此进行深究。接下来就让我们仔细的讨论一下细节问题。和传统的类的定义和方法的调用做一些比较。这样就会体现出Ioc的特点。 下面的UML图就是我之前定义的一个接口和自己的一个实现。 ​                     123public interface CompactDisc &amp;#">
+<meta property="og:description" content="2.1 回顾对于我第一天在bean的装配中写的，是一些基本的语法或者是Spring本身的一些规定，但是我没有对此进行深究。接下来就让我们仔细的讨论一下细节问题。和传统的类的定义和方法的调用做一些比较。这样就会体现出Ioc的特点。 下面的UML图就是我之前定义的一个接口和自己的一个实现。  123public interface CompactDisc &amp;#123;    void play();&amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/01/31/《Spring实战》系列之Bean的装配-Days02/《Spring实战》系列之Bean的装配-Days02/1.png">
-<meta property="og:image" content="http://yoursite.com/2019/01/31/《Spring实战》系列之Bean的装配-Days02/《Spring实战》系列之Bean的装配-Days02/3.png">
-<meta property="og:updated_time" content="2019-03-04T01:30:21.000Z">
+<meta property="og:image" content="http://yoursite.com/2019/01/31/《Spring实战》系列之Bean的装配-Days02/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/31/《Spring实战》系列之Bean的装配-Days02/3.png">
+<meta property="og:updated_time" content="2019-04-29T02:27:13.069Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Spring实战》系列之Bean的装配-Days02">
-<meta name="twitter:description" content="2.1 回顾对于我第一天在bean的装配中写的，是一些基本的语法或者是Spring本身的一些规定，但是我没有对此进行深究。接下来就让我们仔细的讨论一下细节问题。和传统的类的定义和方法的调用做一些比较。这样就会体现出Ioc的特点。 下面的UML图就是我之前定义的一个接口和自己的一个实现。 ​                     123public interface CompactDisc &amp;#">
-<meta name="twitter:image" content="http://yoursite.com/2019/01/31/《Spring实战》系列之Bean的装配-Days02/《Spring实战》系列之Bean的装配-Days02/1.png">
+<meta name="twitter:description" content="2.1 回顾对于我第一天在bean的装配中写的，是一些基本的语法或者是Spring本身的一些规定，但是我没有对此进行深究。接下来就让我们仔细的讨论一下细节问题。和传统的类的定义和方法的调用做一些比较。这样就会体现出Ioc的特点。 下面的UML图就是我之前定义的一个接口和自己的一个实现。  123public interface CompactDisc &amp;#123;    void play();&amp;">
+<meta name="twitter:image" content="http://yoursite.com/2019/01/31/《Spring实战》系列之Bean的装配-Days02/1.png">
 
 
 
@@ -386,7 +386,7 @@
 
       
         <h2 id="2-1-回顾"><a href="#2-1-回顾" class="headerlink" title="2.1 回顾"></a>2.1 回顾</h2><p>对于我第一天在bean的装配中写的，是一些基本的语法或者是Spring本身的一些规定，但是我没有对此进行深究。接下来就让我们仔细的讨论一下细节问题。和传统的类的定义和方法的调用做一些比较。这样就会体现出Ioc的特点。 下面的UML图就是我之前定义的一个接口和自己的一个实现。</p>
-<p>​                    <img src="《Spring实战》系列之Bean的装配-Days02\1.png" alt></p>
+<p><img src="/2019/01/31/《Spring实战》系列之Bean的装配-Days02/1.png" alt></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CompactDisc</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">play</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SgtPeppers</span> <span class="keyword">implements</span> <span class="title">CompactDisc</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String title=<span class="string">"享受孤独的音乐"</span>;</span><br><span class="line">    <span class="keyword">private</span> String article=<span class="string">"奏出和谐的篇章"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">play</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(title+article);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="2-2-下面是我的测试类"><a href="#2-2-下面是我的测试类" class="headerlink" title="2.2 下面是我的测试类"></a>2.2 下面是我的测试类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner.class)</span><br><span class="line"><span class="meta">@ContextConfiguration</span>(classes = CDPlayConfig.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CDPlayerTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> CompactDisc cd;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        cd.play();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -424,7 +424,7 @@
 <p>在上述的配置中，c:_0或者c:_1中的0和1就是索引，也就是多参数的情况下使用的一种方式，比如上述的字段title和article这两个字段就可以这样写。value可以更加灵活的说明。下面的是List中的参数的值。此时我们也希望将配置文件和XML共同的加载到Spring文件中，此时就用ImportSource注解</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span></span><br><span class="line"><span class="meta">@Import</span>(CDConfig.class)</span><br><span class="line"><span class="meta">@ImportResource</span>(<span class="string">"classpath:applicationContext.xml"</span>)</span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CDPlayerConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> CDPlayer <span class="title">compactDisc</span><span class="params">(CompactDisc compactDisc)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> CDPlayer(compactDisc);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="2-7-在XML-中引入JavaConfig"><a href="#2-7-在XML-中引入JavaConfig" class="headerlink" title="2.7 在XML 中引入JavaConfig"></a>2.7 在XML 中引入JavaConfig</h2><p>此时我们的配置类直接以bean的方式配置就可以啦</p>
-<p><img src="《Spring实战》系列之Bean的装配-Days02\3.png" alt></p>
+<p><img src="/2019/01/31/《Spring实战》系列之Bean的装配-Days02/3.png" alt></p>
 
       
     </div>
@@ -544,7 +544,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

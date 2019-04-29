@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1 幂等性概念​    在Java领域，我们有时候或者大多时侯都要保证接口幂等。那么什么是幂等呢？简单的来说就是防止重复提交数据或者重复对接口的调用。这在金融领域或者电商领域显得尤为重要。比如一笔订单我们要保证不能重复提交。当前前端也可以做部分的限制，但是我们应该在后端做相应的处理，以保证我们的数据操作符合业务逻辑。 1.1表单重复提价问题rpc远程调用时候 发生网络延迟  可能有重试机制  MQ">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/01/28/接口的幂等性设计-一/接口的幂等性设计-一/123.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/28/接口的幂等性设计-一/123.png">
 <meta property="og:updated_time" content="2019-03-04T01:30:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="接口的幂等性设计 一">
 <meta name="twitter:description" content="1 幂等性概念​    在Java领域，我们有时候或者大多时侯都要保证接口幂等。那么什么是幂等呢？简单的来说就是防止重复提交数据或者重复对接口的调用。这在金融领域或者电商领域显得尤为重要。比如一笔订单我们要保证不能重复提交。当前前端也可以做部分的限制，但是我们应该在后端做相应的处理，以保证我们的数据操作符合业务逻辑。 1.1表单重复提价问题rpc远程调用时候 发生网络延迟  可能有重试机制  MQ">
-<meta name="twitter:image" content="http://yoursite.com/2019/01/28/接口的幂等性设计-一/接口的幂等性设计-一/123.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/01/28/接口的幂等性设计-一/123.png">
 
 
 
@@ -389,7 +389,7 @@
 
 MQ消费者幂等（保证唯一）一样 
 </code></pre><h1 id="2-基于Redis-Token幂等"><a href="#2-基于Redis-Token幂等" class="headerlink" title="2 基于Redis+Token幂等"></a>2 基于Redis+Token幂等</h1><p>​    这也就是我为什么这里为什么是接口的幂等设计一的原因啦。实现的方式当然是多种的。比如乐观锁机制等。这里我们使用了唯一Token的方式来实现。流程如下：</p>
-<p><img src="接口的幂等性设计-一/123.png" alt="你想输入的替代文字"></p>
+<p><img src="/2019/01/28/接口的幂等性设计-一/123.png" alt="你想输入的替代文字"></p>
 <p>​    说明下流程：</p>
 <p>​    1 假设前端准备提交支付按钮</p>
 <p>​    2 此时准备提交表单数据，并且表单存在Token.</p>
@@ -525,7 +525,7 @@ MQ消费者幂等（保证唯一）一样
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
