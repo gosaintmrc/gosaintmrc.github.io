@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="大佛拈花" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="/* trim */ String.prototype.Trim = function () {     return this.replace(/(^\s*)|(\s*$)/g, &quot;&quot;); } String.prototype.LTrim = function () {     return this.replace(/(^\s*)/g, &quot;&quot;); } String.prototype.RTri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大佛拈花">
+<meta property="og:url" content="http://yoursite.com/2019/05/06/Freemaker在表格中遍历数据/亚信科技网上报销系统零星报销申请单101201905001545_files/jsfunction/index.html">
+<meta property="og:site_name" content="大佛拈花">
+<meta property="og:description" content="/* trim */ String.prototype.Trim = function () {     return this.replace(/(^\s*)|(\s*$)/g, &quot;&quot;); } String.prototype.LTrim = function () {     return this.replace(/(^\s*)/g, &quot;&quot;); } String.prototype.RTri">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/Freemaker在表格中遍历数据/亚信科技网上报销系统零星报销申请单101201905001545_files/jsfunction/">
+<meta property="og:updated_time" content="2019-05-06T01:20:41.068Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="大佛拈花">
+<meta name="twitter:description" content="/* trim */ String.prototype.Trim = function () {     return this.replace(/(^\s*)|(\s*$)/g, &quot;&quot;); } String.prototype.LTrim = function () {     return this.replace(/(^\s*)/g, &quot;&quot;); } String.prototype.RTri">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/06/Freemaker在表格中遍历数据/亚信科技网上报销系统零星报销申请单101201905001545_files/jsfunction/">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/06/Freemaker在表格中遍历数据/亚信科技网上报销系统零星报销申请单101201905001545_files/jsfunction/">
+
+
+
+
+
+  <title> | 大佛拈花</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">大佛拈花</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/06/Freemaker在表格中遍历数据/亚信科技网上报销系统零星报销申请单101201905001545_files/jsfunction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gosaint">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/images.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大佛拈花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T09:20:41+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/06/Freemaker在表格中遍历数据/亚信科技网上报销系统零星报销申请单101201905001545_files/jsfunction/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/05/06/Freemaker在表格中遍历数据/亚信科技网上报销系统零星报销申请单101201905001545_files/jsfunction/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        /*
+trim
+*/
+String.prototype.Trim = function () {
+    return this.replace(/(^\s*)|(\s*$)/g, "");
+}
+String.prototype.LTrim = function () {
+    return this.replace(/(^\s*)/g, "");
+}
+String.prototype.RTrim = function () {
+    return this.replace(/(\s*$)/g, "");
+}
+
+
+function ShowNewWindow(url, width, height, scrollbars, resizable) {
+    var top = (window.screen.availHeight - height) / 2;
+    var left = (window.screen.availWidth - width) / 2;
+    var win = window.open(url, "_blank","aisseNewWindow", "width=" + width + ",height=" + height + ",top=" + top + ",left=" + left + ",Status=no,toolbar=no,menubar=no,location=no,scrollbars=" + scrollbars + ",resizable=" + resizable + "");
+    try {
+        win.focus();
+    }
+    catch (e)
+    { }
+}
+
+/*
+在屏幕中央打开窗体
+*/
+
+function ShowCenterWindow(url, width, height, scrollbars, resizable) {
+    var top = (window.screen.availHeight - height) / 2;
+    var left = (window.screen.availWidth - width) / 2;
+    var win = window.open(url, "aisseNewWindow", "width=" + width + ",height=" + height + ",top=" + top + ",left=" + left + ",Status=no,toolbar=no,menubar=no,location=no,scrollbars=" + scrollbars + ",resizable=" + resizable + "");
+    try {
+        win.focus();
+        return win;
+    }
+    catch (e)
+    { }
+}
+
+/*在屏幕中间位置打开页面*/
+function ShowNoScrollWindow(url, width, height) {
+    var top = (window.screen.availHeight - height) / 2;
+    var left = (window.screen.availWidth - width) / 2;
+    var win = window.open(url, "", "width=" + width + ",height=" + height + ",top=" + top + ",left=" + left + ",Status=no,toolbar=no,menubar=no,location=no,scrollbars=no,resizable=no");
+    win.focus();
+}
+
+/*
+在屏幕中间位置打开页面
+可以指定是否可以控制大小
+*/
+function ShowNoScrollResizableWindow(url, width, height, resizable) {
+    var top = (window.screen.availHeight - height) / 2;
+    var left = (window.screen.availWidth - width) / 2;
+    if (resizable == 'yes') {
+        var win = window.open(url, "", "width=" + width + ",height=" + height + ",top=" + top + ",left=" + left + ",Status=no,toolbar=no,menubar=no,location=no,scrollbars=no,resizable=yes");
+        win.focus();
+    }
+    else
+        ShowNoScrollWindow(url, width, height);
+}
+
+
+
+/*
+在屏幕中间位置打开页面
+始终打开一个窗体
+*/
+function ShowNoScrollOneWindow(url, width, height) {
+    var top = (window.screen.availHeight - height) / 2;
+    var left = (window.screen.availWidth - width) / 2;
+    var win = window.open(url, "JustOneWindow", "width=" + width + ",height=" + height + ",top=" + top + ",left=" + left + ",Status=no,toolbar=no,menubar=no,location=no,scrollbars=no,resizable=no");
+    win.focus();
+}
+
+
+/*在屏幕中间位置打开页面*/
+function ShowWindow(url, width, height) {
+    var top = (window.screen.availHeight - height) / 2;
+    var left = (window.screen.availWidth - width) / 2;
+    var win = window.open(url, "", "width=" + width + ",height=" + height + ",top=" + top + ",left=" + left + ",Status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=no");
+    win.focus();
+}
+
+/*
+在屏幕中间位置打开页面
+*/
+function ShowOneWindow(url, width, height) {
+    var top = (window.screen.availHeight - height) / 2;
+    var left = (window.screen.availWidth - width) / 2;
+    var win = window.open(url, "JustOneWindow", "width=" + width + ",height=" + height + ",top=" + top + ",left=" + left + ",Status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=no");
+    win.focus();
+}
+
+
+/*在屏幕中间位置打开页面*/
+function ShowScrollResizeWindow(url, width, height) {
+    var top = (window.screen.availHeight - height) / 2;
+    var left = (window.screen.availWidth - width) / 2;
+    var win = window.open(url, "", "width=" + width + ",height=" + height + ",top=" + top + ",left=" + left + ",Status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes");
+    win.focus();
+}
+
+function SetShutOut(imgUrl) {
+    var shut = window.document.getElementById("shutout");
+    if (shut) {
+        shut.style.display = "block";
+    }
+    else {
+        var innerHTML = "<div class="bg" id="shutout"><iframe id="iframeDivID" class="iframeDiv"></iframe></div>"
+        var content = "<div id="content" style="z-index:201"><img src="/2019/05/06/Freemaker在表格中遍历数据/亚信科技网上报销系统零星报销申请单101201905001545_files/jsfunction/" + imgurl ""></div>";
+        window.document.body.insertAdjacentHTML("beforeEnd", innerHTML);
+        window.document.body.insertAdjacentHTML("beforeEnd", content);
+        window.document.body.style.position = "relative";
+
+        var shut = window.document.getElementById("shutout");
+        var w = window.document.body.offsetWidth > window.document.body.scrollWidth ? window.document.body.offsetWidth : window.document.body.scrollWidth;
+        var h = window.document.body.offsetHeight > window.document.body.scrollHeight ? window.document.body.offsetHeight : window.document.body.scrollHeight;
+        shut.style.width = w;
+        shut.style.height = h;
+
+        var iframeDiv = window.document.getElementById("iframeDivID");
+        iframeDiv.style.width = w;
+        iframeDiv.style.height = h;
+
+        var content = window.document.getElementById("content");
+        content.style.position = "absolute";
+        //content.style.left = window.document.body.offsetWidth/2;
+        //content.style.top = window.document.body.offsetHeight/2;
+
+        content.style.top = h / 4;
+        content.style.left = w / 2 - 50;
+    }
+}
+
+function HiddenShutOut() {
+    var shut = window.document.getElementById("shutout");
+
+    if (shut)
+        shut.style.display = "none";
+}
+
+
+
+
+
+/*	LTrim(string):去除左边的空格
+
+==================================================================
+
+*/
+
+function LTrim(str) {
+
+    var whitespace = new String(" \t\n\r");
+
+    var s = new String(str);
+
+
+
+    if (whitespace.indexOf(s.charAt(0)) != -1) {
+
+        var j = 0, i = s.length;
+
+        while (j < i && whitespace.indexOf(s.charAt(j)) != -1) {
+
+            j++;
+
+        }
+
+        s = s.substring(j, i);
+
+    }
+
+    return s;
+
+}
+
+
+
+/*
+
+==================================================================
+
+RTrim(string):去除右边的空格
+
+==================================================================
+
+*/
+
+function RTrim(str) {
+
+    var whitespace = new String(" \t\n\r");
+
+    var s = new String(str);
+
+
+
+    if (whitespace.indexOf(s.charAt(s.length - 1)) != -1) {
+
+        var i = s.length - 1;
+
+        while (i >= 0 && whitespace.indexOf(s.charAt(i)) != -1) {
+
+            i--;
+
+        }
+
+        s = s.substring(0, i + 1);
+
+    }
+
+    return s;
+
+}
+
+
+
+/*
+
+==================================================================
+
+Trim(string):去除前后空格
+
+==================================================================
+
+*/
+
+function Trim(str) {
+
+    return RTrim(LTrim(str));
+
+}
+
+
+
+//检查输入的是否是日期
+function CheckDate(theObj) {
+    if (theObj == null)
+        return true;
+    if (Trim(theObj.value) == "") {
+        return true;
+    }
+
+    var inPutValue = Trim(theObj.value).split(" ");
+
+    var theValue = inPutValue[0];
+
+    var theData = theValue.split("-");
+
+    if (theData.length != 3) {
+        return false;
+    }
+
+    // Check is number
+    if (isNaN(theData[0]) || isNaN(theData[1]) || isNaN(theData[2])) {
+        return false;
+    }
+    if (theData[0] == '' || theData[1] == '' || theData[2] == '') {
+        return false;
+    }
+    if (theData[0] == null || theData[1] == null || theData[2] == null) {
+        return false;
+    }
+    // Check Year
+    var year = parseInt(theData[0], 10);
+    if (year < 1900 || year > 9999) {
+        return false;
+    }
+
+    // Check Month
+    var month = parseInt(theData[1], 10);
+    if (month < 1 || month > 12) {
+        return false;
+    }
+
+    // Check day
+    var dayLength = 0;
+    switch (month) {
+        case 2:
+            if ((year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0))) {
+                dayLength = 29;
+            }
+            else {
+                dayLength = 28;
+            }
+            break;
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            dayLength = 31;
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            dayLength = 30;
+            break;
+    }
+    var day = parseInt(theData[2], 10);
+    if (day < 1 || day > dayLength) {
+        return false;
+    }
+
+    var theTime;
+
+    var inPutLength = inPutValue.length;
+
+    if (inPutLength > 1) {
+        theTime = inPutValue[inPutLength - 1].split(":");
+
+        if (isNaN(theTime[0]) || isNaN(theTime[1]) || isNaN(theTime[2])) {
+            return false;
+        }
+        if (theTime[0] == '' || theTime[1] == '' || theTime[2] == '') {
+            return false;
+        }
+        if (theTime[0] == null || theTime[1] == null || theTime[2] == null) {
+
+            return false;
+        }
+
+        var h = parseInt(theTime[0], 10);
+
+        if (h < 0 || h >= 24) {
+            return false;
+        }
+
+        var m = parseInt(theTime[1], 10);
+        if (m < 0 || m >= 60) {
+            return false;
+        }
+
+        var s = parseInt(theTime[2], 10);
+        if (s < 0 || s >= 60) {
+            return false;
+        }
+
+    }
+    return true;
+}
+
+function CheckDateValue(theObjValue) {
+
+    if (Trim(theObjValue) == "") {
+        return false;
+    }
+
+    var inPutValue = Trim(theObjValue).split(" ");
+
+    var theValue = inPutValue[0];
+
+    var theData = theValue.split("-");
+
+    if (theData.length != 3) {
+        return false;
+    }
+
+    // Check is number
+    if (isNaN(theData[0]) || isNaN(theData[1]) || isNaN(theData[2])) {
+        return false;
+    }
+    if (theData[0] == '' || theData[1] == '' || theData[2] == '') {
+        return false;
+    }
+    if (theData[0] == null || theData[1] == null || theData[2] == null) {
+        return false;
+    }
+    // Check Year
+    var year = parseInt(theData[0], 10);
+    if (year < 1900 || year > 9999) {
+        return false;
+    }
+
+    // Check Month
+    var month = parseInt(theData[1], 10);
+    if (month < 1 || month > 12) {
+        return false;
+    }
+
+    // Check day
+    var dayLength = 0;
+    switch (month) {
+        case 2:
+            if ((year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0))) {
+                dayLength = 29;
+            }
+            else {
+                dayLength = 28;
+            }
+            break;
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            dayLength = 31;
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            dayLength = 30;
+            break;
+    }
+    var day = parseInt(theData[2], 10);
+    if (day < 1 || day > dayLength) {
+        return false;
+    }
+
+    var theTime;
+
+    var inPutLength = inPutValue.length;
+
+    if (inPutLength > 1) {
+        theTime = inPutValue[inPutLength - 1].split(":");
+
+        if (isNaN(theTime[0]) || isNaN(theTime[1]) || isNaN(theTime[2])) {
+            return false;
+        }
+        if (theTime[0] == '' || theTime[1] == '' || theTime[2] == '') {
+            return false;
+        }
+        if (theTime[0] == null || theTime[1] == null || theTime[2] == null) {
+
+            return false;
+        }
+
+        var h = parseInt(theTime[0], 10);
+
+        if (h < 0 || h >= 24) {
+            return false;
+        }
+
+        var m = parseInt(theTime[1], 10);
+        if (m < 0 || m >= 60) {
+            return false;
+        }
+
+        var s = parseInt(theTime[2], 10);
+        if (s < 0 || s >= 60) {
+            return false;
+        }
+
+    }
+    return true;
+}
+
+//判断是否是钱的形式
+function isMoney(pObj, errMsg) {
+    var obj = eval(pObj);
+    strRef = "1234567890.-";
+    if (!isEmpty(pObj, errMsg)) return false;
+    for (i = 0; i < obj.value.length; i++) {
+        tempChar = obj.value.substring(i, i + 1);
+        if (strRef.indexOf(tempChar, 0) == -1) {
+            if (errMsg == null || errMsg == "")
+                alert("数据不符合要求,请检查");
+            else
+                alert(errMsg);
+            if (obj.type == "text")
+                obj.focus();
+            return false;
+        }
+        else {
+            tempLen = obj.value.indexOf(".");
+            if (tempLen != -1) {
+                strLen = obj.value.substring(tempLen + 1, obj.value.length);
+                if (strLen.length > 2) {
+                    if (errMsg == null || errMsg == "")
+                        alert("数据不符合要求,请检查");
+                    else
+                        alert(errMsg);
+                    if (obj.type == "text")
+                        obj.focus();
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+
+/*
+只能输入数字
+在 onKeypress 时候调用
+允许输入 0123456789.-
+*/
+function OnlyNumber() {
+    if (!
+	(((window.event.keyCode >= 48) && (window.event.keyCode <= 100 57)) || (window.event.keycode="=" 13) 46) 45)) ) { window.event.keycode="0;" } * isint(string,string,int or string):(测试字符串,+ - empty,empty 0) 功能：判断是否为整数、正整数、负整数、正整数+0、负整数+0 function isint(objstr, sign, zero) var reg; bolzero; if (trim(objstr)="=" "") return false; else objstr="objStr.toString();" ((sign="=" null) (trim(sign)="=" "")) sign="+-" ; ((zero="=" (trim(zero)="=" bolzero="false;" zero="zero.toString();" (zero="=" "0") alert("检查是否包含0参数，只可为(空、0)"); switch (sign) case "+-": 整数 reg="/(^-?|^\+?)\d+$/;" break; "+": (!bolzero) 正整数 正整数+0 "-": 负整数 负整数+0 default: alert("检查符号参数，只可为(空、+、-)"); r="objStr.match(reg);" (r="=" true; formatcurrencynocomma(num) num="num.toString().replace(/\$|\,/g," ''); (isnan(num))="=" (num"" math.abs(num))); + 0.50000000001); cents="num" % 100; 100).tostring(); (cents < 10) cents; for (var i="0;" math.floor((num.length (1 i)) 3); i++) num.length (4 3)) num.substring(num.length 3)); (((sign) ? '' : '-') '.' cents); formatcurrency(num) ',' 如果选择了现金入卡，则付款单位信息不能写 changepaymenttype() objtextboxpayableto="document.getElementById(" paytoquickqueryapprover_textboxeqinfo");" objtextboxpayabletotel="document.getElementById(" textboxpayabletotel");" objtextboxbankac="document.getElementById(" textboxbankac");" objtextboxbankaccount="document.getElementById(" textboxbankaccount");" objdropdownlistpaymenttype="document.getElementById(" dropdownlistpaymenttype");" objtextboxlinkmen="document.getElementById(" textboxlinkmen");" 新加的支行等信息 objtxtprovince="document.getElementById(" txtprovince");" objtxtcity="document.getElementById(" txtcity");" objtxtzhihang="document.getElementById(" txtzhihang");" objhidvendor="document.getElementById(" paytoquickqueryapprover_hiddeneqvendorname");" objdropdownlistbacktype="document.getElementById(" dropdownlistbacktype");" objtxtserialnumber="document.getElementById(" textboxbankserialnumber");" (objdropdownlistpaymenttype !="null)" (objdropdownlistpaymenttype.value="=" "cashcard") (objtextboxpayableto) objtextboxpayableto.value objtextboxpayableto.style.backgroundcolor="#d3d3d3" objtextboxpayableto.readonly="true" 只读 (objhidvendor) objhidvendor.value (objtxtprovince) objtxtprovince.value objtxtprovince.style.backgroundcolor="#d3d3d3" objtxtprovince.readonly="true" objtxtcity.value objtxtcity.style.backgroundcolor="#d3d3d3" objtxtcity.readonly="true" (objtxtzhihang) objtxtzhihang.value objtxtzhihang.style.backgroundcolor="#d3d3d3" objtxtzhihang.readonly="true" objtxtaccountname.value objtxtaccountname.style.backgroundcolor="#d3d3d3" objtxtaccountname.readonly="true" (objdropdownlistbacktype) objdropdownlistbacktype.value objdropdownlistbacktype.style.backgroundcolor="#d3d3d3" objdropdownlistbacktype.readonly="true" objdropdownlistbacktype.setattribute("disabled", "disabled"); (objtextboxlinkmen) objtextboxlinkmen.value objtextboxlinkmen.style.backgroundcolor="#d3d3d3" objtextboxlinkmen.readonly="true" (objtextboxpayabletotel) objtextboxpayabletotel.value objtextboxpayabletotel.style.backgroundcolor="#d3d3d3" objtextboxpayabletotel.readonly="true" objtextboxbankac.value objtextboxbankac.style.backgroundcolor="#d3d3d3" objtextboxbankac.readonly="true" (objtextboxbankaccount) objtextboxbankaccount.value objtextboxbankaccount.style.backgroundcolor="#d3d3d3" objtextboxbankaccount.readonly="true" (objtxtserialnumber) objtxtserialnumber.style.display="none" (document.getelementbyid("serialnumbertext")) document.getelementbyid("serialnumbertext").style.display="none" 可写 (objtxtcity) ""); objtxtserialnumber.value "bankcollected") changepaymenttypepurchasing() (document.all["dropdownlistpaymenttype"].value="=" 只能输入数字、-、backspace、del checknumber(str) ((str> 47) && (str < 58) || (str == 8) || (str == 45))
+        return true;
+    else
+        return false;
+}
+//只能输入数字、字母
+var strMatch = /^[A-Za-z0-9]*$/;
+function CheckInputValid(str) {
+    return strMatch.test(str);
+}
+
+var strIDMatch = /^[A-Za-z0-9*]*$/;
+function CheckIDCardInputValid(str) {
+    return strIDMatch.test(str);
+}
+
+//添加Cookie
+function addCookie(c_name, value, expiredays) {
+    if (expiredays > 0) {
+        var exdate = new Date();
+        exdate.setDate(exdate.getDate() + expiredays);
+        document.cookie = c_name + "=" + escape(value) + ((expiredays == null) ? "" : "; expires=" + exdate.toUTCString());
+    }
+}
+
+//取得Cookie值
+function getCookie(name) {
+    var strCookie = document.cookie;
+    var arrCookie = strCookie.split("; ");
+    for (var i = 0; i < arrCookie.length; i++) {
+        var arr = arrCookie[i].split("=");
+        if (arr[0] == name) return arr[1];
+    }
+    return "";
+}
+
+//通过设置Cookie的过期时间已删除Cookie
+function deleteCookie(name) {
+    var date = new Date();
+    date.setTime(date.getTime() - 10000);
+    document.cookie = name + "=v; expire=" + date.toGMTString();
+}
+
+//检查浏览器是否允许使用Cookie
+function NavigatorCookieEnable() {
+    var result = false;
+    if (navigator.cookiesEnabled) return true;
+    document.cookie = "aissetestcookie=yes;";
+    var cookieSet = document.cookie;
+    if (cookieSet.indexOf("aissetestcookie=yes") > -1) result = true;
+    document.cookie = "";
+    return result;
+}
+
+//获取控件对象
+function c(obj) {
+    var objName = getObjName(obj);
+    if (document.getElementById(objName) != null)
+        return document.getElementById(objName);
+    else if (document.getElementById(obj) != null)
+        return document.getElementById(obj);
+    else
+        return null;
+}
+
+//获取控件内容，只用于Textbox、Hidden
+function getVal(obj) {
+    return Trim(c(obj).value);
+}
+//设置控件内容，只用于Textbox、Hidden
+function setVal(obj, value) {
+    c(obj).value = value;
+}
+
+function FixWidth(selectObj) {
+    if (navigator.userAgent.toLowerCase().indexOf("firefox") > 0)
+        return;
+
+    //1. 重新生成一个下拉框
+    var newSelectObj = selectObj.cloneNode(true);
+    newSelectObj.selectedIndex = selectObj.selectedIndex;
+    newSelectObj.id = "newSelectObj";
+
+    //2. 找准当前下拉框的屏幕位置
+    var e = selectObj;
+    var absTop = e.offsetTop;
+    var absLeft = e.offsetLeft;
+    while (e = e.offsetParent) {
+        absTop += e.offsetTop;
+        absLeft += e.offsetLeft;
+    }
+
+    //3. 设定新下拉框的屏幕位置
+    with (newSelectObj.style) {
+        position = "absolute";
+        top = absTop + "px";
+        left = absLeft + "px";
+        width = "auto";
+    }
+
+    //4. 老下拉框还原
+    var rollback = function () {
+        RollbackWidth(selectObj, newSelectObj);
+    };
+
+    //5. 添加还原事件
+    if (window.addEventListener) {
+        newSelectObj.addEventListener("blur", rollback, false);
+        newSelectObj.addEventListener("change", rollback, false);
+    } else {
+        newSelectObj.attachEvent("onblur", rollback);
+        newSelectObj.attachEvent("onchange", rollback);
+    }
+
+    //6. 隐藏老的下拉框
+    selectObj.style.visibility = "hidden";
+    document.body.appendChild(newSelectObj);
+
+    if (newSelectObj.offsetWidth < selectObj.offsetWidth) {
+        selectObj.style.visibility = "visible";
+        document.body.removeChild(newSelectObj);
+        return;
+    }
+
+    newSelectObj.focus();
+    var enterSel = "false";
+    var enter = function () {
+        enterSel = enterSelect();
+    };
+    newSelectObj.onmouseover = enter;
+}
+
+
+
+function enterSelect() {
+    return "true";
+}
+
+//------------------- 还原下拉框函数 -----------------------
+function RollbackWidth(selectObj, newSelectObj) {
+    selectObj.selectedIndex = newSelectObj.selectedIndex;
+    selectObj.style.visibility = "visible";
+    if (document.getElementById("newSelectObj") != null) {
+        document.body.removeChild(newSelectObj);
+    }
+}
+//----------------------判断是否海外公司--------------------
+function IsCompanyOverseas(idList, companyID) {
+    var isOverseas = false;
+    for (var i = 0; i < idList.split(';').length; i++) {
+        if (companyID == idList.split(';')[i]) {
+            isOverseas = true;
+            break;
+        }
+    }
+    return isOverseas;
+}
+
+</=>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/06/Freemaker在表格中遍历数据/亚信科技网上报销系统零星报销申请单101201905001545_files/saved_resource/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/06/Freemaker在表格中遍历数据/亚信科技网上报销系统零星报销申请单101201905001545_files/jquery-1.8.0.min/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/images.jpg" alt="gosaint">
+            
+              <p class="site-author-name" itemprop="name">gosaint</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/gosaintmrc/" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:yourname@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gosaint</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'gosaintmrc@aliyun.com',
+            repo: 'hexo-comment',
+            
+            lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'f2feee75859138ebaeb19decfaf973bb8dfe340d',
+            
+                client_id: '6da8c87c303629d03386'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
